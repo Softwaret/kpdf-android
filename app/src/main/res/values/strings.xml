@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Kpdf</string>
+    <string name="login_label">Login</string>
 </resources>
