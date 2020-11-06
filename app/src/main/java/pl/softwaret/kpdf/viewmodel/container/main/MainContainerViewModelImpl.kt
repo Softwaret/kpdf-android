@@ -19,6 +19,8 @@ class MainContainerViewModelImpl : BaseViewModel<MainContainerIntent, MainContai
 
     private fun bindToRelay() {
         relay.moveToLoginEvent.onEach { state.value = MainContainerState.LoginScreen }.launchIn(coroutineScope)
+        relay.moveToRegisterEvent.onEach {state.value = MainContainerState.RegisterScreen }.launchIn(coroutineScope)
+        relay.moveToHomeEvent.onEach { state.value = MainContainerState.HomeScreen }.launchIn(coroutineScope)
     }
 
     override suspend fun handleIntent(intent: MainContainerIntent) = when (intent) {

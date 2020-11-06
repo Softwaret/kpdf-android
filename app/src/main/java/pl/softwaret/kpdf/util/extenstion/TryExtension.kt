@@ -95,3 +95,10 @@ val <ValueType, ErrorType> Try<ValueType, ErrorType>.valueOrNull
 
 val <ValueType, ErrorType> Try<ValueType, ErrorType>.errorOrNull
     get() = joinToError { null }
+
+inline fun <ValueType> runTrying(block: () -> ValueType) =
+    try {
+        block().asValue()
+    } catch (e: Throwable) {
+        e.asError()
+    }

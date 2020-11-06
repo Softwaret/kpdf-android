@@ -3,7 +3,9 @@ package pl.softwaret.kpdf.view.container.main
 import androidx.activity.viewModels
 import pl.softwaret.kpdf.R
 import pl.softwaret.kpdf.view.base.BaseContainerActivity
+import pl.softwaret.kpdf.view.usecase.home.HomeFragment
 import pl.softwaret.kpdf.view.usecase.login.LoginFragment
+import pl.softwaret.kpdf.view.usecase.register.RegisterFragment
 import pl.softwaret.kpdf.view.usecase.splash.SplashFragment
 import pl.softwaret.kpdf.viewmodel.container.main.MainContainerIntent
 import pl.softwaret.kpdf.viewmodel.container.main.MainContainerState
@@ -20,5 +22,7 @@ class MainActivity : BaseContainerActivity<MainContainerIntent, MainContainerSta
         MainContainerState.Initial -> offerToViewModel(MainContainerIntent.ViewReady)
         MainContainerState.SplashScreen -> showFragment(SplashFragment.newInstance())
         MainContainerState.LoginScreen -> showFragment(LoginFragment.newInstance())
+        MainContainerState.RegisterScreen -> showFragment(RegisterFragment.newInstance())
+        MainContainerState.HomeScreen -> showFragment(HomeFragment.newInstance())
     }
 }
