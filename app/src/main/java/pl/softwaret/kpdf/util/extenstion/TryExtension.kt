@@ -102,3 +102,5 @@ inline fun <ValueType> runTrying(block: () -> ValueType) =
     } catch (e: Throwable) {
         e.asError()
     }
+
+fun Try<*, *>.joinToUnit() = Unit

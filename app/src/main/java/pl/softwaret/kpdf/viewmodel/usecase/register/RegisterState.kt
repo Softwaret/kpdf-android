@@ -4,4 +4,5 @@ import pl.softwaret.kpdf.viewmodel.base.BaseState
 
 sealed class RegisterState : BaseState() {
     object Initial : RegisterState()
+    object RegisterError : RegisterState()
 }

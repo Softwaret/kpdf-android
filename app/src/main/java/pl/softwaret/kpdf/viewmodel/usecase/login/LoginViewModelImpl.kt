@@ -4,7 +4,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import org.kodein.di.instance
 import pl.softwaret.kpdf.model.interactor.usecase.login.LoginInteractor
 import pl.softwaret.kpdf.util.`typealias`.sendSignal
-import pl.softwaret.kpdf.util.extenstion.isValue
+import pl.softwaret.kpdf.util.extenstion.joinToUnit
+import pl.softwaret.kpdf.util.extenstion.onError
+import pl.softwaret.kpdf.util.extenstion.onValue
 import pl.softwaret.kpdf.viewmodel.base.BaseViewModel
 import pl.softwaret.kpdf.viewmodel.container.main.relay.MainContainerRelay
 
@@ -22,11 +24,11 @@ class LoginViewModelImpl : BaseViewModel<LoginIntent, LoginState>(), LoginViewMo
         LoginIntent.OnRegister -> {
             mainContainerRelay.moveToRegisterEvent.sendSignal()
         }
-        is LoginIntent.OnLogin -> if (interactor.loginUser(intent.login, intent.password).isValue) {
-            mainContainerRelay.moveToHomeEvent.sendSignal()
-        } else {
-            state.value = LoginState.CredentialsError
-        }
+        is LoginIntent.OnLogin ->
+            interactor.loginUser(intent.login, intent.password)
+                .onValue { mainContainerRelay.moveToHomeEvent.sendSignal() }
+                .onError { state.value = LoginState.CredentialsError }
+                .joinToUnit()
     }
 
 }
