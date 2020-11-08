@@ -22,7 +22,7 @@ class MainActivity : BaseContainerActivity<MainContainerIntent, MainContainerSta
         MainContainerState.Initial -> offerToViewModel(MainContainerIntent.ViewReady)
         MainContainerState.SplashScreen -> showFragment(SplashFragment.newInstance())
         MainContainerState.LoginScreen -> showFragment(LoginFragment.newInstance())
-        MainContainerState.RegisterScreen -> showFragment(RegisterFragment.newInstance())
+        MainContainerState.RegisterScreen -> pushFragment(RegisterFragment.newInstance())
         MainContainerState.HomeScreen -> showFragment(HomeFragment.newInstance())
     }
 }

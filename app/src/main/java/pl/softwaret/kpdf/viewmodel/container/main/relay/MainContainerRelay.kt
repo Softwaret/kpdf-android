@@ -1,10 +1,11 @@
 package pl.softwaret.kpdf.viewmodel.container.main.relay
 
-import pl.softwaret.kpdf.util.`typealias`.SignalFlow
+import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 
+@Suppress("EXPERIMENTAL_API_USAGE")
 interface MainContainerRelay {
 
-    val moveToLoginEvent: SignalFlow
-    val moveToRegisterEvent: SignalFlow
-    val moveToHomeEvent: SignalFlow
+    val moveToLoginEvent: ConflatedBroadcastChannel<Unit>
+    val moveToRegisterEvent: ConflatedBroadcastChannel<Unit>
+    val moveToHomeEvent: ConflatedBroadcastChannel<Unit>
 }

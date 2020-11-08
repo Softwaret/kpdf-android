@@ -1,8 +1,8 @@
 package pl.softwaret.kpdf.viewmodel.container.main
 
+import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import org.kodein.di.instance
 import pl.softwaret.kpdf.viewmodel.base.BaseViewModel
 import pl.softwaret.kpdf.viewmodel.container.main.relay.MainContainerRelay
@@ -18,9 +18,13 @@ class MainContainerViewModelImpl : BaseViewModel<MainContainerIntent, MainContai
     }
 
     private fun bindToRelay() {
-        relay.moveToLoginEvent.onEach { state.value = MainContainerState.LoginScreen }.launchIn(coroutineScope)
-        relay.moveToRegisterEvent.onEach {state.value = MainContainerState.RegisterScreen }.launchIn(coroutineScope)
-        relay.moveToHomeEvent.onEach { state.value = MainContainerState.HomeScreen }.launchIn(coroutineScope)
+        coroutineScope.launch { relay.moveToLoginEvent.consumeEach { state.value = MainContainerState.LoginScreen } }
+        coroutineScope.launch { relay.moveToHomeEvent.consumeEach { state.value = MainContainerState.HomeScreen } }
+        coroutineScope.launch {
+            relay.moveToRegisterEvent.consumeEach {
+                state.value = MainContainerState.RegisterScreen
+            }
+        }
     }
 
     override suspend fun handleIntent(intent: MainContainerIntent) = when (intent) {

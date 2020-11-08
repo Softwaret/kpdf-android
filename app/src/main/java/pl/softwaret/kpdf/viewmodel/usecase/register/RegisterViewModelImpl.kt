@@ -3,8 +3,8 @@ package pl.softwaret.kpdf.viewmodel.usecase.register
 import kotlinx.coroutines.flow.MutableStateFlow
 import org.kodein.di.instance
 import pl.softwaret.kpdf.model.interactor.usecase.register.RegisterInteractor
-import pl.softwaret.kpdf.util.`typealias`.sendSignal
 import pl.softwaret.kpdf.util.extenstion.joinToUnit
+import pl.softwaret.kpdf.util.extenstion.offer
 import pl.softwaret.kpdf.util.extenstion.onError
 import pl.softwaret.kpdf.util.extenstion.onValue
 import pl.softwaret.kpdf.viewmodel.base.BaseViewModel
@@ -21,7 +21,7 @@ class RegisterViewModelImpl : BaseViewModel<RegisterIntent, RegisterState>(), Re
         }
         is RegisterIntent.RegisterUser -> {
             interactor.registerUser(intent.login, intent.password, intent.name)
-                .onValue { mainContainerRelay.moveToLoginEvent.sendSignal() }
+                .onValue { mainContainerRelay.moveToLoginEvent.offer() }
                 .onError { state.value = RegisterState.RegisterError }
                 .joinToUnit()
         }

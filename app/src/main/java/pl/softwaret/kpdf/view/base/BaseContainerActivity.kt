@@ -39,7 +39,15 @@ abstract class BaseContainerActivity<IntentType : BaseIntent,
     protected fun showFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragmentContainer, fragment)
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
+    }
+
+    protected fun pushFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .addToBackStack(null)
             .commit()
     }
 }
