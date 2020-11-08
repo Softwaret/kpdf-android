@@ -1,5 +1,6 @@
 package pl.softwaret.kpdf.view.usecase.login
 
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import kotlinx.android.synthetic.main.login_fragment.*
 import pl.softwaret.kpdf.R
@@ -23,7 +24,6 @@ class LoginFragment : BaseFragment<LoginIntent, LoginState, LoginViewModel>() {
     override fun attachListeners() {
         super.attachListeners()
         loginFragmentLoginBtn.setOnClickListener {
-            clearCredentialsError()
             offerToViewModel(buildOnLoginIntent())
         }
         loginFragmentRegisterLabel.setOnClickListener { offerToViewModel(LoginIntent.OnRegister)}
@@ -38,12 +38,6 @@ class LoginFragment : BaseFragment<LoginIntent, LoginState, LoginViewModel>() {
     }
 
     private fun showCredentialsError() {
-        loginFragmentPasswordEdit.error = ""
-        loginFragmentLoginEdit.error = ""
-    }
-
-    private fun clearCredentialsError() {
-        loginFragmentPasswordEdit.error = null
-        loginFragmentLoginEdit.error = null
+        Toast.makeText(context, "Wrong credentials", Toast.LENGTH_SHORT).show()
     }
 }

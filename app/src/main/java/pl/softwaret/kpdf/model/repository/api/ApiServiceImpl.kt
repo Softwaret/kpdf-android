@@ -8,6 +8,7 @@ import io.ktor.client.features.*
 import io.ktor.client.features.cookies.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
+import io.ktor.client.features.logging.*
 import io.ktor.client.request.*
 import pl.softwaret.kpdf.model.repository.api.entity.LoginResponse
 import pl.softwaret.kpdf.model.repository.api.entity.RegisterResponse
@@ -18,13 +19,17 @@ import pl.softwaret.kpdf.util.extenstion.runTrying
 class ApiServiceImpl : ApiService {
 
     companion object {
-        private const val BASE_URL = "0.0.0.0:8080"
+        private const val BASE_URL = "https://0.0.0.0:8080"
     }
 
     private val apiClient = HttpClient(CIO.create()) {
         install(HttpCookies)
         install(JsonFeature) {
             serializer = KotlinxSerializer()
+        }
+        install(Logging) {
+            logger = Logger.ANDROID
+            level = LogLevel.ALL
         }
 
         HttpResponseValidator {

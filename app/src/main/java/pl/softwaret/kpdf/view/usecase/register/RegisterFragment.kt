@@ -1,5 +1,6 @@
 package pl.softwaret.kpdf.view.usecase.register
 
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import kotlinx.android.synthetic.main.register_fragment.*
 import pl.softwaret.kpdf.R
@@ -27,7 +28,6 @@ class RegisterFragment : BaseFragment<RegisterIntent, RegisterState, RegisterVie
     override fun attachListeners() {
         super.attachListeners()
         registerFragmentLoginBtn.setOnClickListener {
-            clearRegisterError()
             offerToViewModel(buildRegisterUserIntent())
         }
     }
@@ -40,14 +40,6 @@ class RegisterFragment : BaseFragment<RegisterIntent, RegisterState, RegisterVie
         )
 
     private fun showRegisterError() {
-        registerFragmentLoginEdit.error = ""
-        registerFragmentNameEdit.error = ""
-        registerFragmentPasswordEdit.error = ""
-    }
-
-    private fun clearRegisterError() {
-        registerFragmentLoginEdit.error = null
-        registerFragmentNameEdit.error = null
-        registerFragmentPasswordEdit.error = null
+        Toast.makeText(context, "Wrong credentials", Toast.LENGTH_SHORT).show()
     }
 }
