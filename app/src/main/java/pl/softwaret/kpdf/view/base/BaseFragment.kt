@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import pl.softwaret.kpdf.R
 import pl.softwaret.kpdf.viewmodel.base.BaseIntent
 import pl.softwaret.kpdf.viewmodel.base.BaseState
 import pl.softwaret.kpdf.viewmodel.base.ViewModel
@@ -24,11 +23,14 @@ abstract class BaseFragment<IntentType : BaseIntent,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        attachListeners()
         bindToViewModel()
     }
 
     @LayoutRes
     protected abstract fun obtainLayoutId(): Int
+
+    protected open fun attachListeners() {}
 
     private fun bindToViewModel() = viewModel.state.onEach { handleState(it) }.launchIn(lifecycleScope)
 

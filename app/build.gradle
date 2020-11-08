@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlinx-serialization'
 
 android {
     compileSdkVersion 29
@@ -63,6 +64,8 @@ dependencies {
 
     // Ktor
     implementation "io.ktor:ktor-client-cio:1.4.0"
+    implementation "io.ktor:ktor-client-serialization-jvm:1.4.0"
+    implementation "io.ktor:ktor-client-logging-jvm:1.4.0"
 
     // Preferences
     implementation "com.cioccarellia:ksprefs:2.2.1"

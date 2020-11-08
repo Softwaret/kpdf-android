@@ -3,7 +3,7 @@ package pl.softwaret.kpdf.viewmodel.usecase.splash
 import kotlinx.coroutines.flow.MutableStateFlow
 import org.kodein.di.instance
 import pl.softwaret.kpdf.model.interactor.usecase.splash.SplashInteractor
-import pl.softwaret.kpdf.util.`typealias`.sendSignal
+import pl.softwaret.kpdf.util.extenstion.offer
 import pl.softwaret.kpdf.viewmodel.base.BaseViewModel
 import pl.softwaret.kpdf.viewmodel.container.main.relay.MainContainerRelay
 
@@ -21,7 +21,7 @@ class SplashViewModelImpl : BaseViewModel<SplashIntent, SplashState>(), SplashVi
             }
             false -> {
                 state.value = SplashState.UserNotLoggedIn
-                mainContainerRelay.moveToLoginEvent.sendSignal()
+                mainContainerRelay.moveToLoginEvent.offer()
             }
         }
     }

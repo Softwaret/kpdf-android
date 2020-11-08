@@ -3,6 +3,7 @@ package pl.softwaret.kpdf.view.base
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -35,10 +36,18 @@ abstract class BaseContainerActivity<IntentType : BaseIntent,
         viewModel.intent.offer(intent)
     }
 
-    protected fun showFragment(fragment: BaseFragment<*, *, *>) {
+    protected fun showFragment(fragment: Fragment) {
         supportFragmentManager
-                .beginTransaction()
-                .add(R.id.fragmentContainer, fragment)
-                .commit()
+            .beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
+    }
+
+    protected fun pushFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }
