@@ -10,8 +10,7 @@ import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.features.logging.*
 import io.ktor.client.request.*
-import pl.softwaret.kpdf.model.repository.api.entity.LoginResponse
-import pl.softwaret.kpdf.model.repository.api.entity.RegisterResponse
+import pl.softwaret.kpdf.model.repository.api.entity.*
 import pl.softwaret.kpdf.util.extenstion.mapError
 import pl.softwaret.kpdf.util.extenstion.onValue
 import pl.softwaret.kpdf.util.extenstion.runTrying
@@ -43,12 +42,34 @@ class ApiServiceImpl : ApiService {
 
     private var loginToken: String? = null
 
-    override suspend fun registerUser(login: String, password: String, name: String) =
-        runTrying { apiClient.get<RegisterResponse>("$BASE_URL/register?login=$login&password=$password&name=$name") }
-            .mapError { Unit }
+    override suspend fun registerUser(login: String, password: String, name: String) = runRequest {
+        apiClient.get<RegisterResponse>("$BASE_URL/register?login=$login&password=$password&name=$name")
+    }
 
-    override suspend fun loginUser(login: String, password: String) =
-        runTrying { apiClient.get<LoginResponse>("$BASE_URL/login?login=$login&password=$password") }
-            .onValue { loginToken = it.token }
-            .mapError { Unit }
+    override suspend fun loginUser(login: String, password: String) = runRequest {
+        apiClient.get<LoginResponse>("$BASE_URL/login?login=$login&password=$password")
+    }.onValue { loginToken = it.token }
+
+    override suspend fun getPublication(id: Int) = runRequest {
+        apiClient.get<GetPublicationResponse>("$BASE_URL/publications?publicationId=$id")
+    }
+
+    override suspend fun uploadPublication(
+        name: String,
+        pdfBase64: String,
+        description: String
+    ) = runRequest {
+        apiClient.post<UploadPublicationResponse>("$BASE_URL/publications?name=$name&pdfBase64=$pdfBase64&description=$description")
+    }
+
+    override suspend fun updatePublication(publicationId: Int, pdfBase64: String) = runRequest {
+        apiClient.put<UpdatePublicationResponse>("$BASE_URL/publications?publicationId=$publicationId&pdfBase64=$pdfBase64")
+    }
+
+    override suspend fun deletePublication(publicationId: Int) = runRequest {
+        apiClient.delete<DeletePublicationResponse>("$BASE_URL/publications?publicationId=$publicationId")
+    }
+
+    private inline fun <reified T> runRequest(block: () -> T) =
+        runTrying(block).mapError {}
 }
