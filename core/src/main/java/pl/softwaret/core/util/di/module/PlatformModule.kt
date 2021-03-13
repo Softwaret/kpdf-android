@@ -1,4 +1,4 @@
-package pl.softwaret.kpdf.util.di.module
+package pl.softwaret.core.util.di.module
 
 import org.kodein.di.DI
 import org.kodein.di.bind
@@ -8,9 +8,8 @@ import pl.softwaret.core.model.platform.preferences.PreferencesPlatform
 import pl.softwaret.core.model.platform.preferences.PreferencesPlatformImpl
 import pl.softwaret.core.model.platform.time.TimePlatform
 import pl.softwaret.core.model.platform.time.TimePlatformImpl
-import pl.softwaret.kpdf.util.di.module.name.ModuleName
 
-val platformModule = DI.Module(name = ModuleName.PLATFORM.name) {
+val platformModule = DI.Module(name = CoreModuleName.PLATFORM.name) {
     bind<PreferencesPlatform>() with singleton { PreferencesPlatformImpl(instance()) }
     bind<TimePlatform>() with singleton { TimePlatformImpl() }
 }

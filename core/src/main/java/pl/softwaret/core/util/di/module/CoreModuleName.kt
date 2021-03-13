@@ -1,6 +1,6 @@
-package pl.softwaret.kpdf.util.di.module.name
+package pl.softwaret.core.util.di.module
 
-internal enum class ModuleName {
+internal enum class CoreModuleName {
     REPOSITORY,
     ANDROID,
     INTERACTOR,

@@ -34,6 +34,10 @@ android {
             dimension "api-source"
         }
     }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
@@ -55,6 +59,9 @@ dependencies {
 
     // Preferences
     implementation "com.cioccarellia:ksprefs:2.2.1"
+
+    // DI
+    implementation 'org.kodein.di:kodein-di:7.1.0'
 
     // Serialization
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.0-RC2"
