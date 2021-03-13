@@ -4,10 +4,10 @@ import org.kodein.di.DI
 import org.kodein.di.bind
 import org.kodein.di.instance
 import org.kodein.di.singleton
-import pl.softwaret.kpdf.model.platform.preferences.PreferencesPlatform
-import pl.softwaret.kpdf.model.platform.preferences.PreferencesPlatformImpl
-import pl.softwaret.kpdf.model.platform.time.TimePlatform
-import pl.softwaret.kpdf.model.platform.time.TimePlatformImpl
+import pl.softwaret.core.model.platform.preferences.PreferencesPlatform
+import pl.softwaret.core.model.platform.preferences.PreferencesPlatformImpl
+import pl.softwaret.core.model.platform.time.TimePlatform
+import pl.softwaret.core.model.platform.time.TimePlatformImpl
 import pl.softwaret.kpdf.util.di.module.name.ModuleName
 
 val platformModule = DI.Module(name = ModuleName.PLATFORM.name) {
