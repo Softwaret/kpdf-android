@@ -6,5 +6,6 @@ internal enum class ModuleName {
     INTERACTOR,
     SERVICE,
     PLATFORM,
-    RELAY
+    RELAY,
+    MAPPER
 }

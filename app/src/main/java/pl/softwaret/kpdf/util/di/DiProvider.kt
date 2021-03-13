@@ -11,7 +11,7 @@ object DiProvider {
 
     fun setupDiProvider(applicationContext: Context) {
         diInstance = DI {
-            importAll(interactorModule, repositoryModule, serviceModule, platformModule, relayModule)
+            importAll(interactorModule, repositoryModule, serviceModule, platformModule, relayModule, mapperModule)
 
             import(obtainAndroidModule(applicationContext))
         }
