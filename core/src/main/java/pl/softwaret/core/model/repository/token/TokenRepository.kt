@@ -1,8 +1,12 @@
 package pl.softwaret.core.model.repository.token
 
-interface TokenRepository {
+internal interface TokenRepository {
 
     suspend fun obtainToken(): String?
 
     suspend fun saveToken(token: String)
+
+    suspend fun obtainRefreshToken(): String?
+
+    suspend fun saveRefreshToken(refreshToken: String)
 }

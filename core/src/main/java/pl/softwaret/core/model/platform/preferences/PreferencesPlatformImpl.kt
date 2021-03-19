@@ -5,7 +5,7 @@ import com.cioccarellia.ksprefs.KsPrefs
 import com.cioccarellia.ksprefs.config.EncryptionType
 import com.cioccarellia.ksprefs.config.model.CommitStrategy
 
-class PreferencesPlatformImpl(
+internal class PreferencesPlatformImpl(
     context: Context
 ) : PreferencesPlatform {
 

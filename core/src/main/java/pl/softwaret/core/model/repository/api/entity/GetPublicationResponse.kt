@@ -3,7 +3,7 @@ package pl.softwaret.core.model.repository.api.entity
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class GetPublicationResponse(
+internal data class GetPublicationResponse(
     val id: Int,
     var name: String,
     var authorLogin: String,

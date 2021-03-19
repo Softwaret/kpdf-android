@@ -1,6 +1,6 @@
 package pl.softwaret.core.model.platform.preferences
 
-interface PreferencesPlatform {
+internal interface PreferencesPlatform {
 
     suspend fun removeKey(key: String)
     suspend fun keyExists(key: String): Boolean

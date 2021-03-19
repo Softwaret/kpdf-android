@@ -6,7 +6,7 @@ import pl.softwaret.core.util.`try`.Try
 import pl.softwaret.core.util.extension.Error
 import pl.softwaret.core.util.extension.asValue
 
-class MockApiServiceImpl : ApiService {
+internal class MockApiServiceImpl : ApiService {
 
     private val publications = mutableSetOf<Publication>()
     private val users = mutableSetOf<User>()

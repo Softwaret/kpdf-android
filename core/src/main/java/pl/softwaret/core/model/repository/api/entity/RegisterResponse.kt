@@ -3,4 +3,4 @@ package pl.softwaret.core.model.repository.api.entity
 import kotlinx.serialization.Serializable
 
 @Serializable
-class RegisterResponse
+internal class RegisterResponse

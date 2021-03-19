@@ -2,7 +2,10 @@ package pl.softwaret.kpdf.util.di
 
 import android.content.Context
 import org.kodein.di.DI
-import pl.softwaret.core.util.di.module.*
+import pl.softwaret.core.util.di.module.interactorModule
+import pl.softwaret.core.util.di.module.platformModule
+import pl.softwaret.core.util.di.module.repositoryModule
+import pl.softwaret.core.util.di.module.serviceModule
 import pl.softwaret.kpdf.util.di.module.obtainAndroidModule
 import pl.softwaret.kpdf.util.di.module.relayModule
 import kotlin.properties.Delegates
@@ -13,7 +16,7 @@ object DiProvider {
 
     fun setupDiProvider(applicationContext: Context) {
         diInstance = DI {
-            importAll(interactorModule, repositoryModule, serviceModule, platformModule, relayModule, mapperModule)
+            importAll(interactorModule, repositoryModule, serviceModule, platformModule, relayModule)
 
             import(obtainAndroidModule(applicationContext))
         }

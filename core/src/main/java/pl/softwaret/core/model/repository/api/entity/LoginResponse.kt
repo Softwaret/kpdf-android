@@ -3,4 +3,4 @@ package pl.softwaret.core.model.repository.api.entity
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class LoginResponse(val token: String)
+internal data class LoginResponse(val token: String)

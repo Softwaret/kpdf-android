@@ -2,7 +2,7 @@ package pl.softwaret.core.model.interactor.usecase.login
 
 import pl.softwaret.core.model.repository.login.LoginRepository
 
-class LoginInteractorImpl(
+internal class LoginInteractorImpl(
     private val loginRepository: LoginRepository
 ) : LoginInteractor {
 

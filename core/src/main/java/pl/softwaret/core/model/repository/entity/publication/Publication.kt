@@ -1,6 +1,6 @@
 package pl.softwaret.core.model.repository.entity.publication
 
-data class Publication(
+internal data class Publication(
     val id: Int,
     var name: String,
     var authorLogin: String,

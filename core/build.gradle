@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlinx-serialization'
 
 android {
     compileSdkVersion 29
@@ -53,7 +54,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // Ktor
-    implementation "io.ktor:ktor-client-cio:1.4.0"
+    implementation "io.ktor:ktor-client-cio:1.5.2"
     implementation "io.ktor:ktor-client-serialization-jvm:1.4.0"
     implementation "io.ktor:ktor-client-logging-jvm:1.4.0"
 
@@ -62,6 +63,9 @@ dependencies {
 
     // DI
     implementation 'org.kodein.di:kodein-di:7.1.0'
+
+    // Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
     // Serialization
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.0-RC2"

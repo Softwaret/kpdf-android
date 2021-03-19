@@ -15,7 +15,7 @@ import pl.softwaret.core.util.extension.mapError
 import pl.softwaret.core.util.extension.onValue
 import pl.softwaret.core.util.extension.runTrying
 
-class ApiServiceImpl : ApiService {
+internal class ApiServiceImpl : ApiService {
 
     companion object {
         private const val BASE_URL = "https://0.0.0.0:8080"

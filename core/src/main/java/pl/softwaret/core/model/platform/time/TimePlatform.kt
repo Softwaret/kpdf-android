@@ -1,6 +1,6 @@
 package pl.softwaret.core.model.platform.time
 
-interface TimePlatform {
+internal interface TimePlatform {
 
     suspend fun obtainCurrentTimestamp(): Long
 }

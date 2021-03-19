@@ -3,7 +3,7 @@ package pl.softwaret.core.model.repository.api
 import pl.softwaret.core.model.repository.api.entity.*
 import pl.softwaret.core.util.`try`.Try
 
-interface ApiService {
+internal interface ApiService {
     suspend fun registerUser(login: String, password: String, name: String): Try<RegisterResponse, Unit>
 
     suspend fun loginUser(login: String, password: String): Try<LoginResponse, Unit>
