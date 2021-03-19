@@ -9,7 +9,7 @@ import pl.softwaret.core.model.repository.login.LoginRepositoryImpl
 import pl.softwaret.core.model.repository.token.TokenRepository
 import pl.softwaret.core.model.repository.token.TokenRepositoryImpl
 
-val repositoryModule = DI.Module(name = CoreModuleName.REPOSITORY.name) {
+internal val repositoryModule = DI.Module(name = CoreModuleName.REPOSITORY.name) {
     bind<TokenRepository>() with singleton { TokenRepositoryImpl(instance()) }
     bind<LoginRepository>() with singleton { LoginRepositoryImpl(instance()) }
 }

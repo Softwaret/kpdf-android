@@ -9,7 +9,7 @@ import pl.softwaret.core.model.platform.preferences.PreferencesPlatformImpl
 import pl.softwaret.core.model.platform.time.TimePlatform
 import pl.softwaret.core.model.platform.time.TimePlatformImpl
 
-val platformModule = DI.Module(name = CoreModuleName.PLATFORM.name) {
+internal val platformModule = DI.Module(name = CoreModuleName.PLATFORM.name) {
     bind<PreferencesPlatform>() with singleton { PreferencesPlatformImpl(instance()) }
     bind<TimePlatform>() with singleton { TimePlatformImpl() }
 }

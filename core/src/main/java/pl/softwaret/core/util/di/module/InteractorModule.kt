@@ -11,7 +11,7 @@ import pl.softwaret.core.model.interactor.usecase.register.RegisterInteractorImp
 import pl.softwaret.core.model.interactor.usecase.splash.SplashInteractor
 import pl.softwaret.core.model.interactor.usecase.splash.SplashInteractorImpl
 
-val interactorModule = DI.Module(name = CoreModuleName.INTERACTOR.name) {
+internal val interactorModule = DI.Module(name = CoreModuleName.INTERACTOR.name) {
     bind<SplashInteractor>() with provider { SplashInteractorImpl(instance()) }
     bind<LoginInteractor>() with provider { LoginInteractorImpl(instance()) }
     bind<RegisterInteractor>() with provider { RegisterInteractorImpl(instance()) }

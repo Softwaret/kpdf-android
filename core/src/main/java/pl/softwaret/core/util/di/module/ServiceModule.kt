@@ -11,7 +11,7 @@ import pl.softwaret.core.model.service.token.TokenService
 import pl.softwaret.core.model.service.token.TokenServiceImpl
 import pl.softwaret.core.util.extension.isMockBuild
 
-val serviceModule = DI.Module(name = CoreModuleName.SERVICE.name) {
+internal val serviceModule = DI.Module(name = CoreModuleName.SERVICE.name) {
     bind<TokenService>() with singleton { TokenServiceImpl(instance()) }
     bind<ApiService>() with singleton { buildApiService() }
 }
