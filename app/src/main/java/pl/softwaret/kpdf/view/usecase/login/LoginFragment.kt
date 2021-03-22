@@ -21,8 +21,8 @@ class LoginFragment : BaseFragment<LoginIntent, LoginState, LoginViewModel>() {
 
     override fun obtainLayoutId() = R.layout.login_fragment
 
-    override fun attachListeners() {
-        super.attachListeners()
+    override fun onViewReady() {
+        super.onViewReady()
         loginFragmentLoginBtn.setOnClickListener {
             offerToViewModel(buildOnLoginIntent())
         }

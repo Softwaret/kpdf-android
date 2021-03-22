@@ -4,5 +4,6 @@ import pl.softwaret.core.model.repository.token.TokenRepository
 
 internal class TokenServiceImpl(private val tokenRepository: TokenRepository) : TokenService {
 
-    override suspend fun isTokenSaved() = tokenRepository.obtainToken() != null
+    override suspend fun isTokenSaved() =
+        tokenRepository.obtainToken() != null && tokenRepository.obtainRefreshToken() != null
 }

@@ -8,6 +8,10 @@ internal interface ApiService {
 
     suspend fun loginUser(login: String, password: String): Try<LoginResponse, Unit>
 
+    suspend fun refreshToken(login: String, refreshToken: String): Try<RefreshTokenResponse, Unit>
+
+    suspend fun getPublications(): Try<GetPublicationsResponse, Unit>
+
     suspend fun getPublication(id: Int): Try<GetPublicationResponse, Unit>
 
     suspend fun uploadPublication(
