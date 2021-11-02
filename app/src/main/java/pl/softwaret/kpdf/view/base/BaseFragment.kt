@@ -23,14 +23,14 @@ abstract class BaseFragment<IntentType : BaseIntent,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        attachListeners()
+        onViewReady()
         bindToViewModel()
     }
 
     @LayoutRes
     protected abstract fun obtainLayoutId(): Int
 
-    protected open fun attachListeners() {}
+    protected open fun onViewReady() {}
 
     private fun bindToViewModel() = viewModel.state.onEach { handleState(it) }.launchIn(lifecycleScope)
 

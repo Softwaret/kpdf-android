@@ -1,5 +1,13 @@
 buildscript {
-    ext.kotlin_version = "1.4.10"
+    ext {
+        kotlin_version = "1.4.31"
+        kodein_version = "7.1.0"
+        timber_version = "4.7.1"
+
+        junit_version = "4.12"
+    }
+
+
     repositories {
         google()
         jcenter()

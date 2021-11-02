@@ -2,11 +2,11 @@ package pl.softwaret.kpdf.viewmodel.usecase.register
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import org.kodein.di.instance
-import pl.softwaret.kpdf.model.interactor.usecase.register.RegisterInteractor
-import pl.softwaret.kpdf.util.extenstion.joinToUnit
-import pl.softwaret.kpdf.util.extenstion.offer
-import pl.softwaret.kpdf.util.extenstion.onError
-import pl.softwaret.kpdf.util.extenstion.onValue
+import pl.softwaret.core.model.interactor.usecase.register.RegisterInteractor
+import pl.softwaret.core.util.extension.joinToUnit
+import pl.softwaret.core.util.extension.offer
+import pl.softwaret.core.util.extension.onError
+import pl.softwaret.core.util.extension.onValue
 import pl.softwaret.kpdf.viewmodel.base.BaseViewModel
 import pl.softwaret.kpdf.viewmodel.container.main.relay.MainContainerRelay
 

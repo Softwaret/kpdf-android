@@ -1,0 +1,67 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlinx-serialization'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion 26
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "api-source"
+
+    productFlavors {
+        mock {
+            dimension "api-source"
+        }
+
+        prod {
+            dimension "api-source"
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Ktor
+    implementation "io.ktor:ktor-client-cio:1.5.2"
+    implementation "io.ktor:ktor-client-serialization-jvm:1.4.0"
+    implementation "io.ktor:ktor-client-logging-jvm:1.4.0"
+
+    // Preferences
+    implementation "com.cioccarellia:ksprefs:2.2.1"
+
+    // DI
+    implementation "org.kodein.di:kodein-di:$kodein_version"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:$timber_version"
+
+    // Serialization
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.0-RC2"
+
+    // Test
+    testImplementation "junit:junit:$junit_version"
+}

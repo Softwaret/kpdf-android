@@ -25,8 +25,8 @@ class RegisterFragment : BaseFragment<RegisterIntent, RegisterState, RegisterVie
         RegisterState.RegisterError -> showRegisterError()
     }
 
-    override fun attachListeners() {
-        super.attachListeners()
+    override fun onViewReady() {
+        super.onViewReady()
         registerFragmentLoginBtn.setOnClickListener {
             offerToViewModel(buildRegisterUserIntent())
         }
