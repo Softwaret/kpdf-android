@@ -6,6 +6,5 @@ internal class LoginInteractorImpl(
     private val loginRepository: LoginRepository
 ) : LoginInteractor {
 
-    override suspend fun loginUser(login: String, password: String) =
-        loginRepository.loginUser(login, password)
+    override suspend fun loginUser(login: String, password: String) = loginRepository.loginUser(login, password)
 }

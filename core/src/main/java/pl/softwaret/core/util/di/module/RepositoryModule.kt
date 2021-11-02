@@ -6,10 +6,13 @@ import org.kodein.di.instance
 import org.kodein.di.singleton
 import pl.softwaret.core.model.repository.login.LoginRepository
 import pl.softwaret.core.model.repository.login.LoginRepositoryImpl
+import pl.softwaret.core.model.repository.publication.PublicationsRepository
+import pl.softwaret.core.model.repository.publication.PublicationsRepositoryImpl
 import pl.softwaret.core.model.repository.token.TokenRepository
 import pl.softwaret.core.model.repository.token.TokenRepositoryImpl
 
 internal val repositoryModule = DI.Module(name = CoreModuleName.REPOSITORY.name) {
     bind<TokenRepository>() with singleton { TokenRepositoryImpl(instance()) }
-    bind<LoginRepository>() with singleton { LoginRepositoryImpl(instance()) }
+    bind<LoginRepository>() with singleton { LoginRepositoryImpl(instance(), instance()) }
+    bind<PublicationsRepository>() with singleton { PublicationsRepositoryImpl(instance()) }
 }

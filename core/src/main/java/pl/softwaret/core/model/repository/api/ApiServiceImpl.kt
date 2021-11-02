@@ -11,6 +11,7 @@ import io.ktor.client.features.json.serializer.*
 import io.ktor.client.features.logging.*
 import io.ktor.client.request.*
 import pl.softwaret.core.model.repository.api.entity.*
+import pl.softwaret.core.util.`try`.Try
 import pl.softwaret.core.util.extension.mapError
 import pl.softwaret.core.util.extension.onValue
 import pl.softwaret.core.util.extension.runTrying
@@ -47,8 +48,16 @@ internal class ApiServiceImpl : ApiService {
     }
 
     override suspend fun loginUser(login: String, password: String) = runRequest {
-        apiClient.get<LoginResponse>("$BASE_URL/login?login=$login&password=$password")
+        apiClient.post<LoginResponse>("$BASE_URL/login?login=$login&password=$password")
     }.onValue { loginToken = it.token }
+
+    override suspend fun refreshToken(login: String, refreshToken: String) = runRequest {
+        apiClient.post<RefreshTokenResponse>("$BASE_URL/login?login=$login&refreshToken=$refreshToken")
+    }
+
+    override suspend fun getPublications(): Try<GetPublicationsResponse, Unit> {
+        TODO("not implemented")
+    }
 
     override suspend fun getPublication(id: Int) = runRequest {
         apiClient.get<GetPublicationResponse>("$BASE_URL/publications?publicationId=$id")
